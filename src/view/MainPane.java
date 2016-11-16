@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.Main;
+import javafx.geometry.Insets;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import model.RaceSession;
 
 public class MainPane extends BorderPane {
 	private List<RaceSessionPane> sessionPanes; // session panes held in centre pane
-	private double rspHeight;
+	private double rspWidth;
 	private HBox centrePane;
 	public MainPane() {
 		sessionPanes = new ArrayList<RaceSessionPane>();
-		rspHeight = Main.windowHeight/sessionPanes.size();
 		centrePane = new HBox();
 		this.setCenter(centrePane);
 	}
@@ -27,8 +28,9 @@ public class MainPane extends BorderPane {
 	public void addSession(RaceSession newSession){
 		RaceSessionPane newrsp = new RaceSessionPane(newSession);
 		sessionPanes.add(newrsp);
+		rspWidth = Main.windowWidth/sessionPanes.size();
 		for (RaceSessionPane rsp : sessionPanes){
-			rsp.setPrefHeight(rspHeight);
+			rsp.setWidths(rspWidth);
 		}
 		centrePane.getChildren().add(newrsp);		
 		

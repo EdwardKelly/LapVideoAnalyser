@@ -49,6 +49,7 @@ public class Main extends Application {
 		Button addSession = new Button("Add Session");
 		addSession.setOnAction((ActionEvent e)->{
 				newSession = createNewSession();
+				mainPane.addSession(newSession);
 		});
 		mainPane.setTop(addSession);
 		
